@@ -1,12 +1,15 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import "./App.css";
 import NewTodoForm from "./components/NewTodoForm";
 import Todos from "./components/Todos";
 import todosReducer from "./hooks/todosReducer";
 import Todo from "./types/Todo";
+import { getStorage, setStorage } from "./storage/storage";
 
 function App() {
-  const [state, dispatch] = useReducer(todosReducer, []);
+  const [state, dispatch] = useReducer(todosReducer, getStorage());
+
+  useEffect(() => setStorage(state), [state]);
 
   return (
     <div className="App">
@@ -17,7 +20,10 @@ function App() {
       />
       <Todos
         todos={state}
-        onDelete={(id: Todo["id"]) => dispatch({ type: "delete", id })}
+        onProgressChange={(id, progress) =>
+          dispatch({ type: "changeProgress", id, progress })
+        }
+        onDelete={(id) => dispatch({ type: "delete", id })}
       />
     </div>
   );
