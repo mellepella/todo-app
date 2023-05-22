@@ -22,7 +22,7 @@ export default function Todos({ todos, onDelete, onProgressChange }: Props) {
           </p>
           <select
             value={todo.progress}
-            className="w-1/3 p-2 bg-slate-300 rounded-r-xl text-black"
+            className="w-1/3 p-2 bg-slate-300 rounded-r-xl text-black cursor-pointer"
             id="progress"
             onChange={({ target }) =>
               onProgressChange(todo.id, target.value as Todo["progress"])
