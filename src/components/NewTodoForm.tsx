@@ -11,17 +11,24 @@ export default function NewTodoForm({ onSubmit }: Props) {
     <form
       onSubmit={(ev) => {
         ev.preventDefault();
-        onSubmit(todoValue);
-        setTodoValue("");
+        if (todoValue !== "") {
+          onSubmit(todoValue);
+          setTodoValue("");
+        }
       }}
     >
       <input
+        className="p-2 text-black rounded-l-xl w-2/3"
         type="text"
         value={todoValue}
         onChange={({ target }) => setTodoValue(target.value)}
-        placeholder="What do you need to do?"
+        placeholder="I have to..."
       />
-      <input type="submit" value="Submit" />
+      <input
+        className="bg-slate-300 w-1/3 p-2 text-black rounded-r-xl"
+        type="submit"
+        value="Submit"
+      />
     </form>
   );
 }
