@@ -25,7 +25,7 @@ export default function NewTodoForm({ onSubmit }: Props) {
         placeholder="I have to..."
       />
       <input
-        className="bg-slate-300 w-1/3 p-2 text-black rounded-r-xl"
+        className="bg-slate-300 w-1/3 p-2 text-black rounded-r-xl cursor-pointer"
         type="submit"
         value="Submit"
       />
